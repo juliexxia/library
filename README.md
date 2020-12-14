@@ -1,6 +1,6 @@
 # LIBRARY REQUESTS
 
-## SET UP
+## Set up
 
 This is a python/flask based service that tracks requests for library books.
 
@@ -10,7 +10,7 @@ This is a python/flask based service that tracks requests for library books.
 2. Install [dataset](https://dataset.readthedocs.io/en/latest/index.html) - `pip install dataset` 
 3. Install [email-validator](https://pypi.org/project/email-validator/) - `pip install email-validator` 
 
-### set up the sqlite3 database
+### Set up the sqlite3 database
 
 cd to the directory where setup_db.py is and:
 
@@ -22,13 +22,13 @@ cd to the directory where setup_db.py is and:
 
 cd to this directory where app.py is and run `python3 app.py`
 
-### seed the database
+### Seed the database
 
 See library.db using the following command:
 
 	$ curl http://127.0.0.1:5000/db_populate
 
-### using the service
+### Using the service
 
 In a new terminal, use curl or a helper like [HTTPie](https://httpie.io/)
 to interact with the app e.g.:
