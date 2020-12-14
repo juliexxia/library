@@ -8,7 +8,7 @@ This is a python/flask based service that tracks requests for library books.
 0. Install python3 (preferably using [pyenv](https://github.com/pyenv/pyenv) for easy version management)
 1. Install [flask](https://flask.palletsprojects.com/en/1.1.x/installation/#)
 2. Install [dataset](https://dataset.readthedocs.io/en/latest/index.html) - `pip install dataset` 
-3. Install [email-validator]((https://pypi.org/project/email-validator/) - `pip install email-validator` 
+3. Install [email-validator](https://pypi.org/project/email-validator/) - `pip install email-validator` 
 
 ### set up the sqlite3 database
 
