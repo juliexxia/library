@@ -20,7 +20,7 @@ def requests():
 		content = request.json
 
 		if not "email" in content:
-			return make_response("Request needs an 'email' key.\n", 404)
+			return make_error_response("Request needs an 'email' key.", 404)
 		email = content["email"]
 
 		# validate email
@@ -30,15 +30,15 @@ def requests():
 		except EmailNotValidError as e:
 			# If email is not valid, print error
 			print(str(e))
-			return make_response(email + ": " + str(e) + "\n", 400)
+			return make_error_response(email + ": " + str(e), 400)
 
 		# look up book in db
 		if not "title" in content:
-			return make_response("Request needs an 'title' key\n.", 404)
+			return make_error_response("Request needs an 'title' key.", 404)
 		title = content["title"]
 		result = db.find_one(title = title)
 		if not result:
-			return make_response("Title not found in library\n", 404)
+			return make_error_response("Title '" + title + "' not found in library", 404)
 
 		to_return = {
 			"id": result["id"],
@@ -58,7 +58,7 @@ def requests():
 def request_one(id):
 	found_request = db.find_one(id = id)
 	if not found_request:
-		return make_response("Request ID not found", 404)
+		return make_error_response("Request ID '" + id + "' not found", 404)
 
 	if request.method == "GET":
 		return make_json_response(found_request, 200)
@@ -87,7 +87,7 @@ def db_populate():
             "available": True
         })
 
-    return make_json_response("library.db successfully seeded!\n", 200)
+    return make_response("library.db successfully seeded!\n", 200)
 
 def get_requests():
     requests = []
@@ -97,6 +97,9 @@ def get_requests():
 
 def make_json_response(content, code):
 	return make_response(jsonify(content), code)
+
+def make_error_response(error_string, code):
+	return make_response("ERROR: " + error_string + "\n", code)
 
 if __name__ == '__main__':
     app.run()
