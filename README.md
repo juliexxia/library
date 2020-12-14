@@ -2,7 +2,7 @@
 
 ## SET UP
 
-This is a python/flask based service. 
+This is a python/flask based service that tracks requests for library books.
 
 ### install necessary tooling
 0. Install python3 (preferably using [pyenv](https://github.com/pyenv/pyenv) for easy version management)
@@ -12,19 +12,19 @@ This is a python/flask based service.
 
 ### set up the sqlite3 database
 
-cd to this directory where db.py is and:
+cd to the directory where setup_db.py is and:
 
-	python3 db.py # run the script that sets up library.db
+	python3 setup_db.py # run the script that sets up library.db
 	sqlite3 library.db # open sqlite
 	sqlite> .tables # check to ensure the library table was created
 
 ### run the server
 
-cd to this directory where app.py is and run `python3 hello.py`
+cd to this directory where app.py is and run `python3 app.py`
 
 ### using the service
 
-In a new terminal, use classic curl commands or a helper like [HTTPie](https://httpie.io/)
+In a new terminal, use curl or a helper like [HTTPie](https://httpie.io/)
 to interact with the app e.g.:
 
 	$ curl --header "Content-Type: application/json" \
@@ -33,7 +33,7 @@ to interact with the app e.g.:
 
 ## Next steps for this project
 
-### Adding tests:
+0) Adding tests:
 - missing email in request POST: 
 	curl --header "Content-Type: application/json" \
 	--data '{"title": "Know My Name - Chanel Miller"}' \
@@ -52,5 +52,7 @@ to interact with the app e.g.:
 - request a request id that exists
 - request a request id that does not exist
 - delete a request on boook, freeing it up
+
+1) Improving documentation
 
 
