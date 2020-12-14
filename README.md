@@ -14,13 +14,19 @@ This is a python/flask based service that tracks requests for library books.
 
 cd to the directory where setup_db.py is and:
 
-	python3 setup_db.py # run the script that sets up library.db
-	sqlite3 library.db # open sqlite
-	sqlite> .tables # check to ensure the library table was created
+	$ python3 setup_db.py # run the script that sets up library.db
+	$ sqlite3 library.db # open sqlite
+	$ sqlite> .tables # check to ensure the library table was created
 
 ### run the server
 
 cd to this directory where app.py is and run `python3 app.py`
+
+### seed the database
+
+See library.db using the following command:
+
+	$ curl http://127.0.0.1:5000/db_populate
 
 ### using the service
 
@@ -28,7 +34,7 @@ In a new terminal, use curl or a helper like [HTTPie](https://httpie.io/)
 to interact with the app e.g.:
 
 	$ curl --header "Content-Type: application/json" \
-		--data '{"title": "Know My Name - Chanel Miller", "email": "user@gd.com"}' \
+		--data '{"title": "Becoming", "email": "user@gd.com"}' \
 		--request POST http://127.0.0.1:5000/requests
 
 ## Next steps for this project
@@ -54,5 +60,6 @@ to interact with the app e.g.:
 - delete a request on boook, freeing it up
 
 1) Improving documentation
+2) Move seed file outside of code, we can read in a csv
 
 

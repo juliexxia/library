@@ -20,7 +20,7 @@ def requests():
 		content = request.json
 
 		if not "email" in content:
-			return make_response("Request needs an 'email' key.", 404)
+			return make_response("Request needs an 'email' key.\n", 404)
 		email = content["email"]
 
 		# validate email
@@ -30,15 +30,15 @@ def requests():
 		except EmailNotValidError as e:
 			# If email is not valid, print error
 			print(str(e))
-			return make_response(email + ": " + str(e), 400)
+			return make_response(email + ": " + str(e) + "\n", 400)
 
 		# look up book in db
 		if not "title" in content:
-			return make_response("Request needs an 'title' key.", 404)
+			return make_response("Request needs an 'title' key\n.", 404)
 		title = content["title"]
 		result = db.find_one(title = title)
 		if not result:
-			return make_response("Title not found in library", 404)
+			return make_response("Title not found in library\n", 404)
 
 		to_return = {
 			"id": result["id"],
@@ -76,10 +76,10 @@ def db_populate():
         db.delete()
 
     books = [
-        "A Little Life - Hanya Yanagihara", 
-        "Name of the Wind - Patrick Rothfuss", 
-        "Know My Name - Chanel Miller",
-        "Into Thin Air - John Krakauer"]
+        "A Little Life ", 
+        "Name of the Wind", 
+        "Know My Name",
+        "Into Thin Air"]
 
     for book in books:
         db.insert({
@@ -87,7 +87,7 @@ def db_populate():
             "available": True
         })
 
-    return make_json_response(get_requests(), 200)
+    return make_json_response("library.db successfully seeded!\n", 200)
 
 def get_requests():
     requests = []

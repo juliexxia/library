@@ -1,7 +1,7 @@
 """ A module for creating the library.db sqlite3 database. """
 
 import sqlite3
-from sqlite3 import Errora
+from sqlite3 import Error
 
 def create_connection(db_file):
     """ create a database connection to the SQLite database
